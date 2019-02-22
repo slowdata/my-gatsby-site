@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import Img from "gatsby-image";
 
+import { kebabCase } from "lodash";
+
 const BlogPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
 
@@ -21,8 +23,19 @@ const BlogPage = ({ data }) => {
                   <Img fixed={frontmatter.thumbnail.childImageSharp.fixed} />
                 </Link>
               </div>
-              <div class="post-list__content">
+              <div className="post-list__content">
                 <h2>{frontmatter.title}</h2>
+                {frontmatter.tags ? (
+                  <div className="tags-container">
+                    <ul className="taglist">
+                      {frontmatter.tags.map(tag => (
+                        <li key={tag + `tag`}>
+                          <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
                 <p>{frontmatter.date}</p>
                 <div className="post-list__excerpt">
                   <p>{node.excerpt}</p>
@@ -61,6 +74,7 @@ export const pageQuery = graphql`
                 }
               }
             }
+            tags
           }
         }
       }
