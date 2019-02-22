@@ -48,7 +48,8 @@ exports.createPages = ({ actions, graphql }) => {
     });
 
     // create Tags pages
-    // pulled directlu from from https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/#add-tags-to-your-markdown-files
+    // pulled directly from from https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/#add-tags-to-your-markdown-files
+
     let tags = [];
     // Iterate though each post, pulling all found tags into `tags`
     _.each(posts, edge => {
@@ -58,13 +59,29 @@ exports.createPages = ({ actions, graphql }) => {
     });
     // Eliminate duplicate tags
     tags = _.uniq(tags);
-    // MAke Tags page
+    // Make Tags page
     tags.forEach(tag => {
       createPage({
         path: `/tags/${_.kebabCase(tag)}/`,
         component: tagsTemplate,
         context: {
           tag
+        }
+      });
+    });
+    // Create blog post list pages
+    const postsPerPage = 2;
+    const numPages = Math.ceil(posts.length / postsPerPage);
+
+    Array.from({ lenght: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `blog/` : `blog/${i + 1}`,
+        component: blogListTemplate,
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numpages,
+          currentPAge: i + 1
         }
       });
     });

@@ -45,8 +45,16 @@ module.exports = {
             options: {
               maxWidth: 600
             }
-          }
+          },
+          `gatsby-remark-prismjs`
         ]
+      }
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data`
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,0 +1,16 @@
+[
+  {
+    "title": "My First Project",
+    "date": "2018-08",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis molestias tenetur corrupti temporibus, itaque nemo est, sapiente error sunt, distinctio hic aut qui esse perferendis voluptas ab iste veniam corporis.",
+    "url": "https://example.com",
+    "thumbnailImage": "../images/projects/proj-1.jpg"
+  },
+  {
+    "title": "My Second Project",
+    "date": "2018-09",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis molestias tenetur corrupti temporibus, itaque nemo est, sapiente error sunt, distinctio hic aut qui esse perferendis voluptas ab iste veniam corporis.",
+    "url": "https://example.com",
+    "thumbnailImage": "../images/projects/proj-2.jpg"
+  }
+]
